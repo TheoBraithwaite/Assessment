@@ -28,20 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.pnlGame = new System.Windows.Forms.Panel();
             this.SuspendLayout();
+            // 
+            // pnlGame
+            // 
+            this.pnlGame.BackColor = System.Drawing.Color.Silver;
+            this.pnlGame.Location = new System.Drawing.Point(12, 32);
+            this.pnlGame.Name = "pnlGame";
+            this.pnlGame.Size = new System.Drawing.Size(500, 400);
+            this.pnlGame.TabIndex = 0;
+            this.pnlGame.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlGame_Paint);
             // 
             // CelestialLiberty
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 461);
+            this.Controls.Add(this.pnlGame);
             this.Name = "CelestialLiberty";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Celestial Liberty";
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel pnlGame;
     }
 }
 

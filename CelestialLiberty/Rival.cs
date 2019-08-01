@@ -11,9 +11,9 @@ namespace CelestialLiberty
     {
         // declare fields to use in the class
         public int x, y, width, height;//variables for the rectangle
-        public Image planetImage;//variable for the planet's image
+        public Image rivalImage;//variable for the planet's image
 
-        public Rectangle planetRec;//variable for a rectangle to place our image in
+        public Rectangle rivalRec;//variable for a rectangle to place our image in
         public int score;
         //Create a constructor (initialises the values of the fields)
         public Rival()
@@ -22,8 +22,14 @@ namespace CelestialLiberty
             y = 10;
             width = 20;
             height = 20;
-            planetImage = Image.FromFile("rival.png");
-            planetRec = new Rectangle(x, y, width, height);
+            rivalImage = Image.FromFile("rival.png");
+            rivalRec = new Rectangle(x, y, width, height);
+            g.DrawImage(rivalImage, rivalRec);
+        }
+        //Methods for the Planet class
+        public void drawRival(Graphics g)
+        {
+            g.DrawImage(rivalImage, rivalRec);
         }
     }
 }
