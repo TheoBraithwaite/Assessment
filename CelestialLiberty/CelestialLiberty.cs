@@ -14,7 +14,7 @@ namespace CelestialLiberty
     {
         Graphics g; //Declare a graphics object called g
         // declare space for an array of 7 objects called planet 
-        Planet[] planet = new Planet[7];
+        Rival[] rival = new Rival[7];
 
         public CelestialLiberty()
         {
@@ -22,7 +22,8 @@ namespace CelestialLiberty
 
             for (int i = 0; i < 7; i++)
             {
-                Rival[i] = new Rival();
+                int x = 10 + (i * 75);
+                rival[i] = new Rival(x);
             }
         }
 
@@ -34,7 +35,7 @@ namespace CelestialLiberty
             for (int i = 0; i < 7; i++)
             {
                 //call the Planet class's drawPlanet method to draw the images
-                Rival[i].drawRival(g);
+                rival[i].drawRival(g);
             }
         }
     }

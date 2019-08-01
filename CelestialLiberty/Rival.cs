@@ -16,15 +16,14 @@ namespace CelestialLiberty
         public Rectangle rivalRec;//variable for a rectangle to place our image in
         public int score;
         //Create a constructor (initialises the values of the fields)
-        public Rival()
+        public Rival(int spacing)
         {
-            x = 10;
+            x = spacing;
             y = 10;
             width = 20;
             height = 20;
-            rivalImage = Image.FromFile("rival.png");
+            rivalImage = Image.FromFile("planet1.png");
             rivalRec = new Rectangle(x, y, width, height);
-            g.DrawImage(rivalImage, rivalRec);
         }
         //Methods for the Planet class
         public void drawRival(Graphics g)
