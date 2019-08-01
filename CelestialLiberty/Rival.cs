@@ -30,5 +30,15 @@ namespace CelestialLiberty
         {
             g.DrawImage(rivalImage, rivalRec);
         }
+        public void moveRival()
+        {
+            rivalRec.Location = new Point(x, y);
+
+            if (rivalRec.Location.Y > 400)
+            {
+                y = 20;
+                rivalRec.Location = new Point(x, y);
+            }
+        }
     }
 }

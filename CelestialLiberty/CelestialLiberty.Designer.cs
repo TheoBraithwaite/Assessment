@@ -45,6 +45,7 @@
             // tmrRival
             // 
             this.tmrRival.Enabled = true;
+            this.tmrRival.Tick += new System.EventHandler(this.tmrRival_Tick);
             // 
             // CelestialLiberty
             // 
@@ -52,6 +53,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 461);
             this.Controls.Add(this.pnlGame);
+            this.DoubleBuffered = true;
             this.Name = "CelestialLiberty";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Celestial Liberty";
