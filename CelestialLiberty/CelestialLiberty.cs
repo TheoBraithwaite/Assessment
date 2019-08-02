@@ -12,6 +12,8 @@ namespace CelestialLiberty
 {
     public partial class CelestialLiberty : Form
     {
+        bool left, right;
+        string move;
         Graphics g; //Declare a graphics object called g
         // declare space for an array of 7 objects called planet 
         Rival[] rival = new Rival[7];
@@ -45,6 +47,32 @@ namespace CelestialLiberty
                 rival[i].drawRival(g);
             }
             serpent.drawSerpent(g);
+        }
+
+        private void CelestialLiberty_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Left) { left = true; }
+            if (e.KeyData == Keys.Right) { right = true; }
+        }
+
+        private void CelestialLiberty_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Left) { left = false; }
+            if (e.KeyData == Keys.Right) { right = false; }
+        }
+
+        private void tmrSerpent_Tick(object sender, EventArgs e)
+        {
+            if (right) //If right arrow key pressed
+            {
+                move = "right";
+                serpent.moveSerpent(move);
+            }
+            if (left) //If left arrow key pressed
+            {
+                move = "left";
+                serpent.moveSerpent(move);
+            }
         }
 
         private void tmrRival_Tick(object sender, EventArgs e)

@@ -36,6 +36,7 @@ namespace CelestialLiberty
 
             if (rivalRec.Location.Y > 400)
             {
+                score += 1;
                 y = 20;
                 rivalRec.Location = new Point(x, y);
             }

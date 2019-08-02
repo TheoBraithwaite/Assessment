@@ -32,5 +32,37 @@ namespace CelestialLiberty
         {
             g.DrawImage(serpent, serpentRec);
         }
+        public void moveSerpent (string move)
+        {
+            if (move == "right")
+            {
+                if (serpentRec.Location.X > 450) //Is Serpent within 50 of right side
+                {
+                    x = 450;
+                    serpentRec.Location = new Point(x, y);
+                }
+                else
+                {
+                    x += 5;
+                    serpentRec.Location = new Point(x, y);
+                }
+            }
+            if (move == "left")
+            {
+                if (serpentRec.Location.X < 10) // is spaceship within 10 of left side
+                {
+
+                    x = 10;
+                    serpentRec.Location = new Point(x, y);
+                }
+                else
+                {
+                    x -= 5;
+                    serpentRec.Location = new Point(x, y);
+                }
+
+            }
+
+        }
     }
 }

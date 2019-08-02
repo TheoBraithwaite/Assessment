@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.pnlGame = new System.Windows.Forms.Panel();
             this.tmrRival = new System.Windows.Forms.Timer(this.components);
+            this.tmrSerpent = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // pnlGame
@@ -47,6 +48,12 @@
             this.tmrRival.Enabled = true;
             this.tmrRival.Tick += new System.EventHandler(this.tmrRival_Tick);
             // 
+            // tmrSerpent
+            // 
+            this.tmrSerpent.Enabled = true;
+            this.tmrSerpent.Interval = 50;
+            this.tmrSerpent.Tick += new System.EventHandler(this.tmrSerpent_Tick);
+            // 
             // CelestialLiberty
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -54,9 +61,12 @@
             this.ClientSize = new System.Drawing.Size(634, 461);
             this.Controls.Add(this.pnlGame);
             this.DoubleBuffered = true;
+            this.KeyPreview = true;
             this.Name = "CelestialLiberty";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Celestial Liberty";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CelestialLiberty_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.CelestialLiberty_KeyUp);
             this.ResumeLayout(false);
 
         }
@@ -65,6 +75,7 @@
 
         private System.Windows.Forms.Panel pnlGame;
         private System.Windows.Forms.Timer tmrRival;
+        private System.Windows.Forms.Timer tmrSerpent;
     }
 }
 
