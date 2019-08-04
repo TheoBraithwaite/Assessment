@@ -13,6 +13,7 @@ namespace CelestialLiberty
     public partial class CelestialLiberty : Form
     {
         bool left, right;
+        int score, lives;
         string move;
         Graphics g; //Declare a graphics object called g
         // declare space for an array of 7 objects called planet 
@@ -75,13 +76,84 @@ namespace CelestialLiberty
             }
         }
 
+        private void CelestialLiberty_Load(object sender, EventArgs e)
+        {
+            tmrSerpent.Enabled = false;
+            tmrRival.Enabled = false;
+            MessageBox.Show("Use the left and right arrow keys to move the spaceship. \n Don't get hit by the planets! \n Every planet that gets past scores a point. \n If a planet hits a spaceship a life is lost! \n \n Enter your Name press tab and enter the number of lives \n Click Start to begin", "Game Instructions");
+            TxtName.Focus();
+        }
+
+        private void FileStart_Click(object sender, EventArgs e)
+        {
+            score = 0;
+            LblScore.Text = score.ToString();
+            lives = int.Parse(TxtLives.Text);// pass lives entered from textbox to lives variable
+            tmrRival.Enabled = true;
+            tmrSerpent.Enabled = true;
+        }
+
+        private void FileStop_Click(object sender, EventArgs e)
+        {
+            tmrSerpent.Enabled = false;
+            tmrRival.Enabled = false;
+        }
+
+        private void FileExit_Click(object sender, EventArgs e)
+        {
+            tmrSerpent.Enabled = false;
+            tmrRival.Enabled = false;
+            string message = "Are you sure you want to exit?";
+            string message2 = "Click File->Start to continue playing.";
+            string caption = "Confirm exit";
+            string caption2 = "Continue playing";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            MessageBoxButtons buttons2 = MessageBoxButtons.OK;
+            MessageBoxIcon icon1 = MessageBoxIcon.Question;
+            MessageBoxIcon icon2 = MessageBoxIcon.Information;
+
+            //Displays the MessageBox.
+            DialogResult quit = MessageBox.Show(message, caption, buttons, icon1);
+            if (quit == DialogResult.Yes)
+            {
+                // Closes the parent form.
+                this.Close();
+            }
+            //If the player ends up choosing not to (rage) quit, display this MessageBox.
+            else if (quit == DialogResult.No)
+            {
+                MessageBox.Show(message2, caption2, buttons2, icon2);
+            }
+        }
+
         private void tmrRival_Tick(object sender, EventArgs e)
         {
+            score = 0;
             for (int i = 0; i < 7; i++)
             {
+                score += rival[i].score; //Get score from Rival class (in moveRival method)
+                LblScore.Text = score.ToString(); //Dsiplay score
                 rival[i].moveRival();
+                if (serpent.serpentRec.IntersectsWith(rival[i].rivalRec))
+                {
+                    //reset rival[i] back to top of panel
+                    rival[i].y = 30; //Set  y value of rivalRec
+                    lives -= 1;//Lose a life
+                    TxtLives.Text = lives.ToString();//Display number of lives
+                    checkLives();
+                }
+
             }
             pnlGame.Invalidate(); //Makes the paint event fire to redraw the panel
+        }
+        private void checkLives()
+        {
+            if (lives == 0)
+            {
+                tmrRival.Enabled = false;
+                tmrSerpent.Enabled = false;
+                MessageBox.Show("Game Over!");
+            }
         }
     }
 }

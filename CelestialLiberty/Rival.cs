@@ -36,7 +36,7 @@ namespace CelestialLiberty
 
             if (rivalRec.Location.Y > 400)
             {
-                score += 1;
+                score += 1; //Add 1 to score when rival reaches far-left side of panel
                 y = 20;
                 rivalRec.Location = new Point(x, y);
             }
