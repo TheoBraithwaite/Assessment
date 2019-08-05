@@ -18,14 +18,15 @@ namespace CelestialLiberty
         //Create a constructor (initialises the values of the fields)
         public Rival(int spacing)
         {
-            x = spacing;
-            y = 10;
+            x = 380;
+            y = spacing;
             width = 20;
             height = 20;
             rivalImage = Image.FromFile("planet1.png");
             rivalRec = new Rectangle(x, y, width, height);
         }
-        //Methods for the Planet class
+
+        //Methods for the Rival class
         public void drawRival(Graphics g)
         {
             g.DrawImage(rivalImage, rivalRec);
@@ -34,10 +35,10 @@ namespace CelestialLiberty
         {
             rivalRec.Location = new Point(x, y);
 
-            if (rivalRec.Location.Y > 400)
+            if (rivalRec.Location.X < 5)
             {
                 score += 1; //Add 1 to score when rival reaches far-left side of panel
-                y = 20;
+                x = 380;
                 rivalRec.Location = new Point(x, y);
             }
         }

@@ -18,17 +18,17 @@ namespace CelestialLiberty
         Graphics g; //Declare a graphics object called g
         // declare space for an array of 7 objects called planet 
         Rival[] rival = new Rival[7];
-        Random yspeed = new Random();
+        Random xspeed = new Random();
         Serpent serpent = new Serpent();
 
         public CelestialLiberty()
         {
             InitializeComponent();
 
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i <= 6; i++)
             {
-                int x = 10 + (i * 75);
-                rival[i] = new Rival(x);
+                int y = 380 + (i * 75);
+                rival[i] = new Rival(y);
             }
         }
 
@@ -38,11 +38,11 @@ namespace CelestialLiberty
             g = e.Graphics;
 
             //Call the Planet class's DrawPlanet method to draw the image planet1 
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i <= 6; i++)
             {
                 // generate a random number from 5 to 20 and put it in rndmspeed
-                int rndmspeed = yspeed.Next(5, 20);
-                rival[i].y += rndmspeed;
+                int rndmspeed = xspeed.Next(5, 20);
+                rival[i].x += rndmspeed;
 
                 //call the Planet class's drawPlanet method to draw the images
                 rival[i].drawRival(g);
@@ -129,7 +129,7 @@ namespace CelestialLiberty
         private void tmrRival_Tick(object sender, EventArgs e)
         {
             score = 0;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i <= 6; i++)
             {
                 score += rival[i].score; //Get score from Rival class (in moveRival method)
                 LblScore.Text = score.ToString(); //Dsiplay score
@@ -137,7 +137,7 @@ namespace CelestialLiberty
                 if (serpent.serpentRec.IntersectsWith(rival[i].rivalRec))
                 {
                     //reset rival[i] back to top of panel
-                    rival[i].y = 30; //Set  y value of rivalRec
+                    rival[i].x = 380; //Set  y value of rivalRec
                     lives -= 1;//Lose a life
                     TxtLives.Text = lives.ToString();//Display number of lives
                     checkLives();

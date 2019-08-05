@@ -19,15 +19,15 @@ namespace CelestialLiberty
         //Create a constructor (initialises the values of the fields)
         public Serpent()
         {
-            x = 250;
-            y = 360;
+            x = 20;
+            y = 200;
             width = 40;
             height = 40;
             serpent = Image.FromFile("alien1.png");
             serpentRec = new Rectangle(x, y, width, height);
         }
 
-        //methods
+        //Methods for the Serpent class
         public void drawSerpent(Graphics g)
         {
             g.DrawImage(serpent, serpentRec);
