@@ -18,7 +18,7 @@ namespace CelestialLiberty
         //Create a constructor (initialises the values of the fields)
         public Rival(int spacing)
         {
-            x = 380;
+            x = 460;
             y = spacing;
             width = 20;
             height = 20;
@@ -38,7 +38,7 @@ namespace CelestialLiberty
             if (rivalRec.Location.X < 5)
             {
                 score += 1; //Add 1 to score when rival reaches far-left side of panel
-                x = 380;
+                x = 460;
                 rivalRec.Location = new Point(x, y);
             }
         }

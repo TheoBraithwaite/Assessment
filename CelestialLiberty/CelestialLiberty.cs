@@ -12,7 +12,7 @@ namespace CelestialLiberty
 {
     public partial class CelestialLiberty : Form
     {
-        bool left, right;
+        bool up, down;
         int score, lives;
         string move;
         Graphics g; //Declare a graphics object called g
@@ -27,7 +27,7 @@ namespace CelestialLiberty
 
             for (int i = 0; i <= 6; i++)
             {
-                int y = 380 + (i * 75);
+                int y = 30 + (i * 50);
                 rival[i] = new Rival(y);
             }
         }
@@ -42,7 +42,7 @@ namespace CelestialLiberty
             {
                 // generate a random number from 5 to 20 and put it in rndmspeed
                 int rndmspeed = xspeed.Next(5, 20);
-                rival[i].x += rndmspeed;
+                rival[i].x -= rndmspeed;
 
                 //call the Planet class's drawPlanet method to draw the images
                 rival[i].drawRival(g);
@@ -52,26 +52,26 @@ namespace CelestialLiberty
 
         private void CelestialLiberty_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.Left) { left = true; }
-            if (e.KeyData == Keys.Right) { right = true; }
+            if (e.KeyData == Keys.Up) { up = true; }
+            if (e.KeyData == Keys.Down) { down = true; }
         }
 
         private void CelestialLiberty_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.Left) { left = false; }
-            if (e.KeyData == Keys.Right) { right = false; }
+            if (e.KeyData == Keys.Up) { up = false; }
+            if (e.KeyData == Keys.Down) { down = false; }
         }
 
         private void tmrSerpent_Tick(object sender, EventArgs e)
         {
-            if (right) //If right arrow key pressed
+            if (up) //If right arrow key pressed
             {
-                move = "right";
+                move = "up";
                 serpent.moveSerpent(move);
             }
-            if (left) //If left arrow key pressed
+            if (down) //If left arrow key pressed
             {
-                move = "left";
+                move = "down";
                 serpent.moveSerpent(move);
             }
         }
@@ -137,7 +137,7 @@ namespace CelestialLiberty
                 if (serpent.serpentRec.IntersectsWith(rival[i].rivalRec))
                 {
                     //reset rival[i] back to top of panel
-                    rival[i].x = 380; //Set  y value of rivalRec
+                    rival[i].x = 460; //Set  y value of rivalRec
                     lives -= 1;//Lose a life
                     TxtLives.Text = lives.ToString();//Display number of lives
                     checkLives();

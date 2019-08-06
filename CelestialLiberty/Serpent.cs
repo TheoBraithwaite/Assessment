@@ -34,30 +34,30 @@ namespace CelestialLiberty
         }
         public void moveSerpent (string move)
         {
-            if (move == "right")
+            if (move == "up")
             {
-                if (serpentRec.Location.X > 450) //Is Serpent within 50 of right side
+                if (serpentRec.Location.Y < 10) //Is Serpent within 50 of right side
                 {
-                    x = 450;
+                    y = 10;
                     serpentRec.Location = new Point(x, y);
                 }
                 else
                 {
-                    x += 5;
+                    y -= 5;
                     serpentRec.Location = new Point(x, y);
                 }
             }
-            if (move == "left")
+            if (move == "down")
             {
-                if (serpentRec.Location.X < 10) // is spaceship within 10 of left side
+                if (serpentRec.Location.X > 490) // is spaceship within 10 of left side
                 {
 
-                    x = 10;
+                    x = 490;
                     serpentRec.Location = new Point(x, y);
                 }
                 else
                 {
-                    x -= 5;
+                    y += 5;
                     serpentRec.Location = new Point(x, y);
                 }
 
