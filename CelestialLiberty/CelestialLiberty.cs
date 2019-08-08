@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Reflection;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,12 @@ namespace CelestialLiberty
         public CelestialLiberty()
         {
             InitializeComponent();
+
+            //Block to prevent code from flickering.------------------------------
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty 
+                | BindingFlags.Instance 
+                | BindingFlags.NonPublic, null, pnlGame, new object[] { true });
+            //--------------------------------------------------------------------
 
             for (int i = 0; i <= 6; i++)
             {
@@ -81,6 +88,7 @@ namespace CelestialLiberty
             tmrSerpent.Enabled = false;
             tmrRival.Enabled = false;
             MessageBox.Show("Use the left and right arrow keys to move the spaceship. \n Don't get hit by the planets! \n Every planet that gets past scores a point. \n If a planet hits a spaceship a life is lost! \n \n Enter your Name press tab and enter the number of lives \n Click Start to begin", "Game Instructions");
+            FileStart.Enabled = false;
             TxtName.Focus();
         }
 
@@ -123,6 +131,60 @@ namespace CelestialLiberty
             else if (quit == DialogResult.No)
             {
                 MessageBox.Show(message2, caption2, buttons2, icon2);
+            }
+        }
+
+        private void TxtName_TextChanged(object sender, EventArgs e)
+        {
+            string context = TxtName.Text;
+            bool isletter = true;
+            //for loop checks for letters as characters are entered
+            for (int i = 0; i < context.Length; i++)
+            {
+                if (!char.IsLetter(context[i]))// if current character not a letter
+                {
+                    isletter = false;//make isletter false
+                    break; // exit the for loop
+                }
+
+            }
+
+            // if not a letter clear the textbox and focus on it
+            // to enter name again
+            if (isletter == false)
+            {
+                TxtName.Clear();
+                TxtName.Focus();
+            }
+            else
+            {
+                FileStart.Enabled = true;
+            }
+        }
+
+        private void TxtLives_TextChanged(object sender, EventArgs e)
+        {
+            string context = TxtLives.Text;
+            bool isnumber = true;
+            //This loop checks for numbers as characters are entered
+            for (int i = 0; i < context.Length; i++)
+            {
+                if (!char.IsNumber(context[i]))//If current character is not a number
+                {
+                    isnumber = false;
+                    break;
+                }
+            }
+            //If not a number clear the textbox and focus on it
+            //to enter lives again
+            if (isnumber == false)
+            {
+                TxtLives.Clear();
+                TxtLives.Focus();
+            }
+            else
+            {
+                FileStart.Enabled = true;
             }
         }
 

@@ -21,9 +21,9 @@ namespace CelestialLiberty
         {
             x = 20;
             y = 200;
-            width = 40;
-            height = 40;
-            serpent = Image.FromFile("alien1.png");
+            width = 30;
+            height = 30;
+            serpent = Image.FromFile("serpent.png");
             serpentRec = new Rectangle(x, y, width, height);
         }
 

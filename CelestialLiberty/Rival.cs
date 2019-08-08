@@ -20,9 +20,9 @@ namespace CelestialLiberty
         {
             x = 460;
             y = spacing;
-            width = 20;
-            height = 20;
-            rivalImage = Image.FromFile("planet1.png");
+            width = 40;
+            height = 40;
+            rivalImage = Image.FromFile("rival2.png");
             rivalRec = new Rectangle(x, y, width, height);
         }
 

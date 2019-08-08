@@ -33,7 +33,7 @@
             this.tmrRival = new System.Windows.Forms.Timer(this.components);
             this.tmrSerpent = new System.Windows.Forms.Timer(this.components);
             this.Menu = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.FileStart = new System.Windows.Forms.ToolStripMenuItem();
             this.FileStop = new System.Windows.Forms.ToolStripMenuItem();
             this.FileExit = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,7 +75,7 @@
             // Menu
             // 
             this.Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
+            this.MenuFile,
             this.MenuOptions,
             this.MenuHelp});
             this.Menu.Location = new System.Drawing.Point(0, 0);
@@ -84,15 +84,15 @@
             this.Menu.TabIndex = 1;
             this.Menu.Text = "menuStrip1";
             // 
-            // fileToolStripMenuItem
+            // MenuFile
             // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileStart,
             this.FileStop,
             this.FileExit});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
+            this.MenuFile.Name = "MenuFile";
+            this.MenuFile.Size = new System.Drawing.Size(37, 20);
+            this.MenuFile.Text = "File";
             // 
             // FileStart
             // 
@@ -163,6 +163,7 @@
             this.TxtName.Name = "TxtName";
             this.TxtName.Size = new System.Drawing.Size(100, 20);
             this.TxtName.TabIndex = 2;
+            this.TxtName.TextChanged += new System.EventHandler(this.TxtName_TextChanged);
             // 
             // lblName
             // 
@@ -200,6 +201,7 @@
             this.TxtLives.Name = "TxtLives";
             this.TxtLives.Size = new System.Drawing.Size(50, 20);
             this.TxtLives.TabIndex = 6;
+            this.TxtLives.TextChanged += new System.EventHandler(this.TxtLives_TextChanged);
             // 
             // LblScore
             // 
@@ -248,7 +250,7 @@
 #pragma warning disable CS0108 // Member hides inherited member; missing new keyword
         private System.Windows.Forms.MenuStrip Menu;
 #pragma warning restore CS0108 // Member hides inherited member; missing new keyword
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MenuFile;
         private System.Windows.Forms.ToolStripMenuItem FileStart;
         private System.Windows.Forms.ToolStripMenuItem FileStop;
         private System.Windows.Forms.ToolStripMenuItem FileExit;
