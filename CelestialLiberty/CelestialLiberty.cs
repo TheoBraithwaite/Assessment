@@ -14,6 +14,8 @@ namespace CelestialLiberty
     public partial class CelestialLiberty : Form
     {
         bool up, down;
+        bool text;
+        bool txtlives;
         int score, lives;
         string move;
         Graphics g; //Declare a graphics object called g
@@ -158,7 +160,7 @@ namespace CelestialLiberty
             }
             else
             {
-                FileStart.Enabled = true;
+                text = true;
             }
         }
 
@@ -182,9 +184,18 @@ namespace CelestialLiberty
                 TxtLives.Clear();
                 TxtLives.Focus();
             }
+
             else
             {
-                FileStart.Enabled = true;
+                txtlives = true;
+                if (text && txtlives == true)
+                {
+                    FileStart.Enabled = true;
+                }
+                else
+                {
+                    FileStart.Enabled = false;
+                }
             }
         }
 
@@ -200,8 +211,8 @@ namespace CelestialLiberty
                 {
                     //reset rival[i] back to top of panel
                     rival[i].x = 460; //Set  y value of rivalRec
-                    lives -= 1;//Lose a life
-                    TxtLives.Text = lives.ToString();//Display number of lives
+                    lives -= 1; //Lose a life
+                    TxtLives.Text = lives.ToString(); //Display number of lives
                     checkLives();
                 }
 
@@ -215,6 +226,7 @@ namespace CelestialLiberty
                 tmrRival.Enabled = false;
                 tmrSerpent.Enabled = false;
                 MessageBox.Show("Game Over!");
+                Application.Exit();
             }
         }
     }

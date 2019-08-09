@@ -55,6 +55,7 @@
             // pnlGame
             // 
             this.pnlGame.BackColor = System.Drawing.Color.Silver;
+            this.pnlGame.BackgroundImage = global::CelestialLiberty.Properties.Resources.stars;
             this.pnlGame.Location = new System.Drawing.Point(12, 32);
             this.pnlGame.Name = "pnlGame";
             this.pnlGame.Size = new System.Drawing.Size(500, 400);
@@ -97,21 +98,21 @@
             // FileStart
             // 
             this.FileStart.Name = "FileStart";
-            this.FileStart.Size = new System.Drawing.Size(152, 22);
+            this.FileStart.Size = new System.Drawing.Size(98, 22);
             this.FileStart.Text = "Start";
             this.FileStart.Click += new System.EventHandler(this.FileStart_Click);
             // 
             // FileStop
             // 
             this.FileStop.Name = "FileStop";
-            this.FileStop.Size = new System.Drawing.Size(152, 22);
+            this.FileStop.Size = new System.Drawing.Size(98, 22);
             this.FileStop.Text = "Stop";
             this.FileStop.Click += new System.EventHandler(this.FileStop_Click);
             // 
             // FileExit
             // 
             this.FileExit.Name = "FileExit";
-            this.FileExit.Size = new System.Drawing.Size(152, 22);
+            this.FileExit.Size = new System.Drawing.Size(98, 22);
             this.FileExit.Text = "Exit";
             this.FileExit.Click += new System.EventHandler(this.FileExit_Click);
             // 
@@ -127,13 +128,13 @@
             // OptionsSoundOn
             // 
             this.OptionsSoundOn.Name = "OptionsSoundOn";
-            this.OptionsSoundOn.Size = new System.Drawing.Size(152, 22);
+            this.OptionsSoundOn.Size = new System.Drawing.Size(126, 22);
             this.OptionsSoundOn.Text = "Sound on";
             // 
             // OptionsSoundOff
             // 
             this.OptionsSoundOff.Name = "OptionsSoundOff";
-            this.OptionsSoundOff.Size = new System.Drawing.Size(152, 22);
+            this.OptionsSoundOff.Size = new System.Drawing.Size(126, 22);
             this.OptionsSoundOff.Text = "Sound off";
             // 
             // MenuHelp
@@ -148,13 +149,13 @@
             // HelpBackstory
             // 
             this.HelpBackstory.Name = "HelpBackstory";
-            this.HelpBackstory.Size = new System.Drawing.Size(152, 22);
+            this.HelpBackstory.Size = new System.Drawing.Size(136, 22);
             this.HelpBackstory.Text = "Backstory";
             // 
             // HelpInstructions
             // 
             this.HelpInstructions.Name = "HelpInstructions";
-            this.HelpInstructions.Size = new System.Drawing.Size(152, 22);
+            this.HelpInstructions.Size = new System.Drawing.Size(136, 22);
             this.HelpInstructions.Text = "Instructions";
             // 
             // TxtName
