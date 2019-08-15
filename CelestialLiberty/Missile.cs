@@ -13,16 +13,38 @@ namespace CelestialLiberty
         public Image missile;//variable for the planet's image
 
         public Rectangle missileRec;//variable for a rectangle to place our image in
+        public Rectangle serpent;//variable for a rectangle to place our image in
 
         //Create a constructor (initialises the values of the fields)
         public Missile()
         {
             x = 20;
-            y = 200;
+            missileRec.Location = serpent.Location;
             width = 30;
             height = 30;
             missile = Image.FromFile("planet1.png");
             missileRec = new Rectangle(x, y, width, height);
+        }
+        public void drawMissile(Graphics g)
+        {
+            g.DrawImage(missile, missileRec);
+        }
+        public void shootMissile(string space)
+        {
+            if (space == "shoot")
+            {
+                if (missileRec.Location.Y < 10)
+                {
+                    missile.Location.Y = serpent.Location.Y;
+                    y = 100;
+                    missileRec.Location = new Point(x, y);
+                }
+            }
+            else
+            {
+                y += 5;
+                missileRec.Location = new Point(x, y);
+            }
         }
     }
 }

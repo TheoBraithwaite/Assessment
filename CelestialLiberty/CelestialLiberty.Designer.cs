@@ -50,6 +50,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.TxtLives = new System.Windows.Forms.TextBox();
             this.LblScore = new System.Windows.Forms.Label();
+            this.tmrMissile = new System.Windows.Forms.Timer(this.components);
             this.Menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -215,6 +216,11 @@
             this.LblScore.Size = new System.Drawing.Size(50, 20);
             this.LblScore.TabIndex = 7;
             // 
+            // tmrMissile
+            // 
+            this.tmrMissile.Enabled = true;
+            this.tmrMissile.Tick += new System.EventHandler(this.tmrMissile_Tick);
+            // 
             // CelestialLiberty
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -268,6 +274,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TxtLives;
         private System.Windows.Forms.Label LblScore;
+        private System.Windows.Forms.Timer tmrMissile;
     }
 }
 

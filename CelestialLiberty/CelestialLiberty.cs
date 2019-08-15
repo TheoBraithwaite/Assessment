@@ -14,10 +14,12 @@ namespace CelestialLiberty
     public partial class CelestialLiberty : Form
     {
         bool up, down;
+        bool space;
         bool text;
         bool txtlives;
         int score, lives;
         string move;
+        string shoot;
         Graphics g; //Declare a graphics object called g
         // declare space for an array of 7 objects called planet 
         Rival[] rival = new Rival[7];
@@ -58,18 +60,21 @@ namespace CelestialLiberty
                 rival[i].drawRival(g);
             }
             serpent.drawSerpent(g);
+            missile.drawMissile(g);
         }
 
         private void CelestialLiberty_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Up) { up = true; }
             if (e.KeyData == Keys.Down) { down = true; }
+            if (e.KeyData == Keys.Space) { space = true; }
         }
 
         private void CelestialLiberty_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Up) { up = false; }
             if (e.KeyData == Keys.Down) { down = false; }
+            if (e.KeyData == Keys.Space) { space = false; }
         }
 
         private void tmrSerpent_Tick(object sender, EventArgs e)
@@ -198,6 +203,16 @@ namespace CelestialLiberty
                     FileStart.Enabled = false;
                 }
             }
+        }
+
+        private void tmrMissile_Tick(object sender, EventArgs e)
+        {
+            if (space) //If right arrow key pressed
+            {
+                shoot = "space";
+                missile.shootMissile(shoot);
+            }
+            pnlGame.Invalidate(); //Makes the paint event fire to redraw the panel
         }
 
         private void tmrRival_Tick(object sender, EventArgs e)

@@ -26,6 +26,15 @@ namespace CelestialLiberty
             serpent = Image.FromFile("serpent.png");
             serpentRec = new Rectangle(x, y, width, height);
         }
+        public Missile()
+        {
+            x = 20;
+            y = 200;
+            width = 30;
+            height = 30;
+            serpent = Image.FromFile("serpent.png");
+            serpentRec = new Rectangle(x, y, width, height);
+        }
 
         //Methods for the Serpent class
         public void drawSerpent(Graphics g)
