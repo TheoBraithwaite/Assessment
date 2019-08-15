@@ -23,6 +23,7 @@ namespace CelestialLiberty
         Rival[] rival = new Rival[7];
         Random xspeed = new Random();
         Serpent serpent = new Serpent();
+        Missile missile = new Missile();
 
         public CelestialLiberty()
         {

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CelestialLiberty));
             this.pnlGame = new System.Windows.Forms.Panel();
             this.tmrRival = new System.Windows.Forms.Timer(this.components);
             this.tmrSerpent = new System.Windows.Forms.Timer(this.components);
@@ -55,7 +56,7 @@
             // pnlGame
             // 
             this.pnlGame.BackColor = System.Drawing.Color.Silver;
-            this.pnlGame.BackgroundImage = global::CelestialLiberty.Properties.Resources.stars;
+            this.pnlGame.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlGame.BackgroundImage")));
             this.pnlGame.Location = new System.Drawing.Point(12, 32);
             this.pnlGame.Name = "pnlGame";
             this.pnlGame.Size = new System.Drawing.Size(500, 400);
