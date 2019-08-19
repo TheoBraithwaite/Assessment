@@ -53,7 +53,7 @@ namespace CelestialLiberty
             for (int i = 0; i <= 6; i++)
             {
                 // generate a random number from 5 to 20 and put it in rndmspeed
-                int rndmspeed = xspeed.Next(5, 20);
+                int rndmspeed = xspeed.Next(5);
                 rival[i].x -= rndmspeed;
 
                 //call the Planet class's drawPlanet method to draw the images
@@ -67,14 +67,14 @@ namespace CelestialLiberty
         {
             if (e.KeyData == Keys.Up) { up = true; }
             if (e.KeyData == Keys.Down) { down = true; }
-            if (e.KeyData == Keys.Space) { space = true; }
+            if (e.KeyData == Keys.Back) { space = true; } { missile.missileRec.X = serpent.serpentRec.X; missile.missileRec.Y = serpent.serpentRec.Y; }
         }
 
         private void CelestialLiberty_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Up) { up = false; }
             if (e.KeyData == Keys.Down) { down = false; }
-            if (e.KeyData == Keys.Space) { space = false; }
+            if (e.KeyData == Keys.Back) { space = false; }
         }
 
         private void tmrSerpent_Tick(object sender, EventArgs e)
@@ -209,7 +209,7 @@ namespace CelestialLiberty
         {
             if (space) //If right arrow key pressed
             {
-                shoot = "space";
+                shoot = "shoot";
                 missile.shootMissile(shoot);
             }
             pnlGame.Invalidate(); //Makes the paint event fire to redraw the panel

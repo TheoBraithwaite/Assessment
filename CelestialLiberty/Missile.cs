@@ -18,8 +18,6 @@ namespace CelestialLiberty
         //Create a constructor (initialises the values of the fields)
         public Missile()
         {
-            x = 20;
-            y = 200;
             width = 30;
             height = 30;
             missile = Image.FromFile("planet1.png");
@@ -31,11 +29,13 @@ namespace CelestialLiberty
         }
         public void shootMissile(string space)
         {
+            missileRec.Location = new Point(x, y);
             if (space == "shoot")
             {
-                if (missileRec.Location.X < 400)
+                if (missileRec.Location.X > 390)
                 {
-                    x += 5;
+                    x = 20;
+                    y = 200;
                     missileRec.Location = new Point(x, y);
                 }
             }
