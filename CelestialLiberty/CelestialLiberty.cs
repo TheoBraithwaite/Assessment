@@ -53,7 +53,7 @@ namespace CelestialLiberty
             for (int i = 0; i <= 6; i++)
             {
                 // generate a random number from 5 to 20 and put it in rndmspeed
-                int rndmspeed = xspeed.Next(5);
+                int rndmspeed = xspeed.Next(5, 20);
                 rival[i].x -= rndmspeed;
 
                 //call the Planet class's drawPlanet method to draw the images
@@ -67,14 +67,14 @@ namespace CelestialLiberty
         {
             if (e.KeyData == Keys.Up) { up = true; }
             if (e.KeyData == Keys.Down) { down = true; }
-            if (e.KeyData == Keys.Back) { space = true; } { missile.missileRec.X = serpent.serpentRec.X; missile.missileRec.Y = serpent.serpentRec.Y; }
+            if (e.KeyData == Keys.Space) { space = true; } { missile.missileRec.X = serpent.serpentRec.X; missile.missileRec.Y = serpent.serpentRec.Y; }
         }
 
         private void CelestialLiberty_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Up) { up = false; }
             if (e.KeyData == Keys.Down) { down = false; }
-            if (e.KeyData == Keys.Back) { space = false; }
+            if (e.KeyData == Keys.Space) { space = false; }
         }
 
         private void tmrSerpent_Tick(object sender, EventArgs e)
@@ -95,6 +95,7 @@ namespace CelestialLiberty
         {
             tmrSerpent.Enabled = false;
             tmrRival.Enabled = false;
+            tmrMissile.Enabled = false;
             MessageBox.Show("Use the left and right arrow keys to move the spaceship. \n Don't get hit by the planets! \n Every planet that gets past scores a point. \n If a planet hits a spaceship a life is lost! \n \n Enter your Name press tab and enter the number of lives \n Click Start to begin", "Game Instructions");
             FileStart.Enabled = false;
             TxtName.Focus();
@@ -211,6 +212,19 @@ namespace CelestialLiberty
             {
                 shoot = "shoot";
                 missile.shootMissile(shoot);
+            }
+            for (int i = 0; i <= 6; i++)
+            {
+                rival[i].moveRival();
+                if (missile.missileRec.IntersectsWith(rival[i].rivalRec))
+                {
+                    //reset rival[i] back to top of panel
+                    rival[i].x = 460; //Set  y value of rivalRec
+                    lives -= 1; //Lose a life
+                    TxtLives.Text = lives.ToString(); //Display number of lives
+                    checkLives();
+                }
+
             }
             pnlGame.Invalidate(); //Makes the paint event fire to redraw the panel
         }
