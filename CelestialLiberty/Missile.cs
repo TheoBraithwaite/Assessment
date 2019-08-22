@@ -28,16 +28,13 @@ namespace CelestialLiberty
         {
             g.DrawImage(missile, missileRec);
         }
-        public void shootMissile(string shoot)
+        public void shootMissile(string shoot) //Take this out and edit it to make missile shoot.
         {
             if (shoot == "shoot")
             {
-                x += 30;
                 missileRec.Location = new Point(x, y);
                 if (missileRec.Location.X > 390)
                 {
-                    x = 20;
-                    y = 200;
                     missileRec.Location = new Point(x, y);
                 }
             }

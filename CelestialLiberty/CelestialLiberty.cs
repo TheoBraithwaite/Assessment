@@ -53,7 +53,7 @@ namespace CelestialLiberty
             for (int i = 0; i <= 6; i++)
             {
                 // generate a random number from 5 to 20 and put it in rndmspeed
-                int rndmspeed = xspeed.Next(5, 20);
+                int rndmspeed = xspeed.Next(5);
                 rival[i].x -= rndmspeed;
 
                 //call the Planet class's drawPlanet method to draw the images
@@ -108,6 +108,7 @@ namespace CelestialLiberty
             lives = int.Parse(TxtLives.Text);// pass lives entered from textbox to lives variable
             tmrRival.Enabled = true;
             tmrSerpent.Enabled = true;
+            tmrMissile.Enabled = true;
         }
 
         private void FileStop_Click(object sender, EventArgs e)
@@ -210,6 +211,9 @@ namespace CelestialLiberty
         {
             if (space) //If right arrow key pressed
             {
+                missile.missileRec.X = serpent.serpentRec.X;
+                missile.missileRec.Y = serpent.serpentRec.Y;
+                missile.missileRec.X += 30;
                 shoot = "shoot";
                 missile.shootMissile(shoot);
             }
