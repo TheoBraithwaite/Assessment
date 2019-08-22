@@ -74,7 +74,7 @@ namespace CelestialLiberty
         {
             if (e.KeyData == Keys.Up) { up = false; }
             if (e.KeyData == Keys.Down) { down = false; }
-            if (e.KeyData == Keys.Space) { space = false; }
+            if (e.KeyData == Keys.Space) { space = false; } { missile.missileRec.X = serpent.serpentRec.X; missile.missileRec.Y = serpent.serpentRec.Y; }
         }
 
         private void tmrSerpent_Tick(object sender, EventArgs e)
@@ -211,11 +211,14 @@ namespace CelestialLiberty
         {
             if (space) //If right arrow key pressed
             {
-                missile.missileRec.X = serpent.serpentRec.X;
-                missile.missileRec.Y = serpent.serpentRec.Y;
-                missile.missileRec.X += 30;
+                //missile.missileRec.Location = new Point(missile.missileRec.X, missile.missileRec.Y);
                 shoot = "shoot";
                 missile.shootMissile(shoot);
+                //if (missile.missileRec.Location.X > 390)
+                //{
+                //    missile.missileRec.X = serpent.serpentRec.X;
+                //    missile.missileRec.Y = serpent.serpentRec.Y;
+                //}
             }
             for (int i = 0; i <= 6; i++)
             {

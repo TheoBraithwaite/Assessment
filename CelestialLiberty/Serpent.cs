@@ -15,7 +15,6 @@ namespace CelestialLiberty
         public Image serpent;//variable for the planet's image
 
         public Rectangle serpentRec;//variable for a rectangle to place our image in
-        public Rectangle missileRec;
 
         //Create a constructor (initialises the values of the fields)
         public Serpent()
