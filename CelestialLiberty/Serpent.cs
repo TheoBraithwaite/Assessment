@@ -50,10 +50,10 @@ namespace CelestialLiberty
             }
             if (move == "down")
             {
-                if (serpentRec.Location.X > 490) // is spaceship within 10 of left side
+                if (serpentRec.Location.Y > 490) // is spaceship within 10 of left side
                 {
 
-                    x = 490;
+                    y = 490;
                     serpentRec.Location = new Point(x, y);
                 }
                 else

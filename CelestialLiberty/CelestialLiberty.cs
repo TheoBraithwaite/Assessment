@@ -96,7 +96,7 @@ namespace CelestialLiberty
             tmrSerpent.Enabled = false;
             tmrRival.Enabled = false;
             tmrMissile.Enabled = false;
-            MessageBox.Show("Use the left and right arrow keys to move the spaceship. \n Don't get hit by the planets! \n Every planet that gets past scores a point. \n If a planet hits a spaceship a life is lost! \n \n Enter your Name press tab and enter the number of lives \n Click Start to begin", "Game Instructions");
+            MessageBox.Show("Use the left and right arrow keys to move the spaceship. \n Don't get hit by the hostile fleet! \n Every hostile spaceship that gets past scores a point. \n Make spaces to move through by shooting spaceships from the hostile fleet. \n \n If a hostile spaceship hits your spaceship, a life is lost! \n \n Enter your Name press tab and enter the number of lives \n Click File-->Start to begin.", "Game Instructions");
             FileStart.Enabled = false;
             TxtName.Focus();
         }
@@ -211,14 +211,15 @@ namespace CelestialLiberty
         {
             if (space) //If right arrow key pressed
             {
+                missile.missileRec.X += 30;
                 //missile.missileRec.Location = new Point(missile.missileRec.X, missile.missileRec.Y);
-                shoot = "shoot";
+                //shoot = "shoot";
                 missile.shootMissile(shoot);
-                //if (missile.missileRec.Location.X > 390)
-                //{
-                //    missile.missileRec.X = serpent.serpentRec.X;
-                //    missile.missileRec.Y = serpent.serpentRec.Y;
-                //}
+                if (missile.missileRec.Location.X > 390)
+                {
+                    missile.missileRec.X = serpent.serpentRec.X;
+                    missile.missileRec.Y = serpent.serpentRec.Y;
+                }
             }
             for (int i = 0; i <= 6; i++)
             {
@@ -227,9 +228,6 @@ namespace CelestialLiberty
                 {
                     //reset rival[i] back to top of panel
                     rival[i].x = 460; //Set  y value of rivalRec
-                    lives -= 1; //Lose a life
-                    TxtLives.Text = lives.ToString(); //Display number of lives
-                    checkLives();
                 }
 
             }

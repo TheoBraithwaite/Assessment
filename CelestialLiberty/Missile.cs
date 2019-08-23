@@ -34,7 +34,6 @@ namespace CelestialLiberty
             {
                 if (missileRec.X < 390)
                 {
-                    x += 30;
                     missileRec.Location = new Point(x, y);
                 }
             }
