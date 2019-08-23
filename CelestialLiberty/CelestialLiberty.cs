@@ -21,7 +21,7 @@ namespace CelestialLiberty
         string move;
         string shoot;
         Graphics g; //Declare a graphics object called g
-        // declare space for an array of 7 objects called planet 
+        // declare space for an array of 7 objects called rival 
         Rival[] rival = new Rival[7];
         Random xspeed = new Random();
         Serpent serpent = new Serpent();
@@ -49,14 +49,14 @@ namespace CelestialLiberty
             //Get the graphics used to paint on the panel control
             g = e.Graphics;
 
-            //Call the Planet class's DrawPlanet method to draw the image planet1 
+            //Call the Rival's class's DrawPlanet method to draw the image planet1 
             for (int i = 0; i <= 6; i++)
             {
                 // generate a random number from 5 to 20 and put it in rndmspeed
                 int rndmspeed = xspeed.Next(5);
                 rival[i].x -= rndmspeed;
 
-                //call the Planet class's drawPlanet method to draw the images
+                //call the Rival class's drawPlanet method to draw the images
                 rival[i].drawRival(g);
             }
             serpent.drawSerpent(g);
@@ -67,24 +67,24 @@ namespace CelestialLiberty
         {
             if (e.KeyData == Keys.Up) { up = true; }
             if (e.KeyData == Keys.Down) { down = true; }
-            if (e.KeyData == Keys.Space) { space = true; } { missile.missileRec.X = serpent.serpentRec.X; missile.missileRec.Y = serpent.serpentRec.Y; }
+            if (e.KeyData == Keys.Space) { space = true; } { missile.missileRec.X = serpent.serpentRec.X; missile.missileRec.Y = serpent.serpentRec.Y; } //Set the Missile's x and y location to be the same as Serpent's x and y location.
         }
 
         private void CelestialLiberty_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Up) { up = false; }
             if (e.KeyData == Keys.Down) { down = false; }
-            if (e.KeyData == Keys.Space) { space = false; } { missile.missileRec.X = serpent.serpentRec.X; missile.missileRec.Y = serpent.serpentRec.Y; }
+            if (e.KeyData == Keys.Space) { space = false; } 
         }
 
         private void tmrSerpent_Tick(object sender, EventArgs e)
         {
-            if (up) //If right arrow key pressed
+            if (up) //If up arrow key pressed
             {
                 move = "up";
                 serpent.moveSerpent(move);
             }
-            if (down) //If left arrow key pressed
+            if (down) //If down arrow key pressed
             {
                 move = "down";
                 serpent.moveSerpent(move);
@@ -96,7 +96,7 @@ namespace CelestialLiberty
             tmrSerpent.Enabled = false;
             tmrRival.Enabled = false;
             tmrMissile.Enabled = false;
-            MessageBox.Show("Use the left and right arrow keys to move the spaceship. \n Don't get hit by the hostile fleet! \n Every hostile spaceship that gets past scores a point. \n Make spaces to move through by shooting spaceships from the hostile fleet. \n \n If a hostile spaceship hits your spaceship, a life is lost! \n \n Enter your Name press tab and enter the number of lives \n Click File-->Start to begin.", "Game Instructions");
+            MessageBox.Show("Use the up and down arrow keys to move the spaceship up and down. \n Don't get hit by the hostile fleet! \n Every hostile spaceship that gets past scores a point. \n Make spaces to move through by shooting spaceships from the hostile fleet using the spacebar. \n \n If a hostile spaceship hits your spaceship, a life is lost! \n \n Enter your Name press tab and enter the number of lives \n Click File-->Start to begin.", "Game Instructions");
             FileStart.Enabled = false;
             TxtName.Focus();
         }
@@ -212,8 +212,6 @@ namespace CelestialLiberty
             if (space) //If right arrow key pressed
             {
                 missile.missileRec.X += 30;
-                //missile.missileRec.Location = new Point(missile.missileRec.X, missile.missileRec.Y);
-                //shoot = "shoot";
                 missile.shootMissile(shoot);
                 if (missile.missileRec.Location.X > 390)
                 {

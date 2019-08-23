@@ -10,7 +10,7 @@ namespace CelestialLiberty
     class Missile
     {
         public int x, y, width, height;//variables for the rectangle
-        public Image missile;//variable for the planet's image
+        public Image missile;//variable for the missile's image
 
         public Rectangle missileRec;//variable for a rectangle to place our image in
 
@@ -28,7 +28,7 @@ namespace CelestialLiberty
         {
             g.DrawImage(missile, missileRec);
         }
-        public void shootMissile(string shoot) //Take this out and edit it to make missile shoot.
+        public void shootMissile(string shoot)
         {
             if (shoot == "shoot")
             {
